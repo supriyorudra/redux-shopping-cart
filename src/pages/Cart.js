@@ -1,9 +1,11 @@
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { removeAll } from "../store/cartSlice";
 import useTitle from "../hooks/useTitle";
 import CartCard from "../components/CartCard";
 import "./cart.css"
 
 const Cart = () => {
+  const dispatch = useDispatch()
   let count = 1;
   useTitle('Cart');
 
@@ -37,7 +39,7 @@ const Cart = () => {
             <div className="total">Total</div>
             <div className="totalPrice">$ {total}</div>
           </div>
-          <button className="checkOut">Click To Checkout</button>
+          <button onClick={()=>dispatch(removeAll())} className="checkOut">Click To Checkout</button>
         </div>
       </div>
 
